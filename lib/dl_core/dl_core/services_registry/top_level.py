@@ -238,7 +238,7 @@ class DefaultServicesRegistry(ServicesRegistry):  # type: ignore  # TODO: fix
         return self._required_services
 
     def get_connectors_settings(self, conn_type: ConnectionType) -> Optional[ConnectorSettingsBase]:
-        return self._connectors_settings.get(conn_type)
+        return self._connectors_settings.get(conn_type) if self._connectors_settings is not None else None
 
     def get_data_source_collection_factory(self, us_entry_buffer: USEntryBuffer) -> DataSourceCollectionFactory:
         return DataSourceCollectionFactory(us_entry_buffer=us_entry_buffer)
