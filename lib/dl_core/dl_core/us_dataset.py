@@ -96,6 +96,7 @@ class Dataset(USEntry):
             if dsrc_coll_spec.id in ignore_source_ids or managed_by != ManagedBy.user:
                 continue
             return dsrc_coll_spec.id
+        raise ValueError("Failed to get a data source id")
 
     def get_own_materialized_tables(self, source_id: Optional[str] = None) -> Generator[str, None, None]:
         for dsrc_coll_spec in self.data.source_collections or ():
