@@ -39,7 +39,7 @@ class TestDataSource(DefaultCoreTestClass):
         wrong_params = params | dict(table_name="fake_table_name")
         assert saved_dataset.find_data_source_configuration(
             connection_id=saved_connection.uuid,
-            created_from=FAKE_CREATED_FROM,
+            created_from=SOURCE_TYPE_CH_TABLE,
             parameters=wrong_params,
         ) is None
 
