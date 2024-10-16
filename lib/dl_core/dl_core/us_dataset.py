@@ -88,7 +88,7 @@ class Dataset(USEntry):
     def error_registry(self) -> ComponentErrorRegistry:
         return self.data.component_errors
 
-    def get_single_data_source_id(self, ignore_source_ids: Optional[Collection[str]] = None) -> str:
+    def get_single_data_source_id(self, ignore_source_ids: Optional[Collection[str]] = None) -> Optional[str]:
         # FIXME: remove in the future
         ignore_source_ids = ignore_source_ids or ()
         for dsrc_coll_spec in self.data.source_collections or ():
@@ -96,7 +96,7 @@ class Dataset(USEntry):
             if dsrc_coll_spec.id in ignore_source_ids or managed_by != ManagedBy.user:
                 continue
             return dsrc_coll_spec.id
-        raise ValueError("Failed to get a data source id")
+        return None
 
     def get_own_materialized_tables(self, source_id: Optional[str] = None) -> Generator[str, None, None]:
         for dsrc_coll_spec in self.data.source_collections or ():
