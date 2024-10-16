@@ -114,7 +114,7 @@ def make_dataset(
             dataset=dataset,
             editable_dataset_wrapper=ds_wrapper,
             created_from=created_from,
-            dsrc_params=dsrc_params
+            dsrc_params=dsrc_params,
         )
 
     return dataset
